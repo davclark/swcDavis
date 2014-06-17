@@ -16,12 +16,27 @@ base.scatter + coord_trans(xtrans='log10', ytrans='log10')
 
 base.scatter + log.log_trans
 
-country.mean.df <- ddply(detrended.df, 'country', summarize, mean.gdp=mean(gdpPercap), mean.life=mean(lifeExp))
+country.mean.df <- ddply(detrended.df, 'country', 
+                         summarize, mean.gdp=mean(gdpPercap), 
+                         mean.life=mean(lifeExp))
 
-mean.scatter <- ggplot(country.mean.df, aes(x=mean.gdp, y=mean.life)) + geom_point()
+mean.scatter <- ggplot(country.mean.df, 
+                       aes(x=mean.gdp, y=mean.life)) + geom_point()
 
 mean.scatter + log.log_trans
 
 png('first-plot.png')
 mean.scatter + log.log_trans
-dev.off()
+dev.off
+
+# Making 142 plots
+
+plot.country <- function(df) {
+  png(paste0(df$continent[1], '-', df$country[1], '.png'))
+  print(ggplot(df, aes(x=gdpPercap, y=lifeExp, size=pop)) +    
+            geom_point())
+  dev.off()
+}
+
+
+d_ply(gDat, .(country), plot.country)
