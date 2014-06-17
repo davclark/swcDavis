@@ -4,6 +4,7 @@
 
 source(file.path("scripts", "load_data.R"))
 
+#these are interesting countries
 country.names <- c('Afghanistan', 'China', 'Argentina')
 
 
