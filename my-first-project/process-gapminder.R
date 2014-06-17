@@ -31,11 +31,14 @@ dev.off
 
 # Making 142 plots
 
+# df should have continent, country, etc...
 plot.country <- function(df) {
   png(paste0(df$continent[1], '-', df$country[1], '.png'))
   print(ggplot(df, aes(x=gdpPercap, y=lifeExp, size=pop)) +    
             geom_point())
   dev.off()
+  
+  return()
 }
 
 
