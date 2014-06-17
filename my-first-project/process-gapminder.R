@@ -41,5 +41,5 @@ plot.country <- function(df) {
   return()
 }
 
-
+# This replaces a lot of less efficient code!
 d_ply(gDat, .(country), plot.country)
