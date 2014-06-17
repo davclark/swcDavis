@@ -1,12 +1,17 @@
-# Make a matrix with one column each for three countries (your choice), one row for each year, each "cell" is gdpPercap
+# Make a matrix with one column each for three countries (your choice),
+# one row for each year, each "cell" is gdpPercap
 
 require(reshape2)
 
 source(file.path("scripts", "load_data.R"))
 
+#do analysis for these countries
 desired.countries <- c('Afghanistan', 'China', 'Argentina')
+
+#get data for interesting countries
 three.countries <- subset(gDat, 
               country %in% desired.countries)
+
 
 acast(three.countries, year ~ country, value.var='gdpPercap')
 wide.country.df <- dcast(gDat, year ~ country, value.var='gdpPercap')
