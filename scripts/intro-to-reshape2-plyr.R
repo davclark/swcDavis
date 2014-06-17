@@ -16,7 +16,8 @@ three.countries <- subset(gDat,
 acast(three.countries, year ~ country, value.var='gdpPercap')
 wide.country.df <- dcast(gDat, year ~ country, value.var='gdpPercap')
 
-#load moar stuff with more fun
+#load moar stuff with fun
+#plyr is not so trivial to learn, but pays off very quickly
 require(plyr)
 
 
