@@ -1,17 +1,26 @@
-# Make a matrix with one column each for three countries (your choice), one row for each year, each "cell" is gdpPercap
+# Make a matrix with one column each for three countries (your choice),
+# one row for each year, each "cell" is gdpPercap
 
 require(reshape2)
 
-gDat <- read.delim('data//gapminderDataFiveYear.txt')
+#another comment
+source(file.path("scripts", "load_data.R"))
 
+#do analysis for these countries
 desired.countries <- c('Afghanistan', 'China', 'Argentina')
+
+#get data for interesting countries
 three.countries <- subset(gDat, 
               country %in% desired.countries)
+
 
 acast(three.countries, year ~ country, value.var='gdpPercap')
 wide.country.df <- dcast(gDat, year ~ country, value.var='gdpPercap')
 
+#load moar stuff with fun
+#plyr is not so trivial to learn, but pays off very quickly
 require(plyr)
+
 
 wide.country.array <- acast(gDat, year ~ country, 
             subset=.(country %in% desired.countries),
