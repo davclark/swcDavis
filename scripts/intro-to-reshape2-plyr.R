@@ -2,6 +2,7 @@
 # one row for each year, each "cell" is gdpPercap
 
 require(reshape2)
+require(plyr)
 
 #another comment
 source(file.path("scripts", "load_data.R"))
@@ -19,7 +20,6 @@ wide.country.df <- dcast(gDat, year ~ country, value.var='gdpPercap')
 
 #load moar stuff with fun
 #plyr is not so trivial to learn, but pays off very quickly
-require(plyr)
 
 
 wide.country.array <- acast(gDat, year ~ country, 
