@@ -2,7 +2,7 @@
 
 require(reshape2)
 
-gDat <- read.delim('data//gapminderDataFiveYear.txt')
+source(file.path("scripts", "load_data.R"))
 
 desired.countries <- c('Afghanistan', 'China', 'Argentina')
 three.countries <- subset(gDat, 

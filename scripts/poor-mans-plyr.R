@@ -2,7 +2,7 @@
 # (your choice), one row for each year, each "cell" is 
 # gdpPercap
 
-gDat <- read.delim('data//gapminderDataFiveYear.txt')
+source(file.path("scripts", "load_data.R"))
 
 country.names <- c('Afghanistan', 'China', 'Argentina')
 
